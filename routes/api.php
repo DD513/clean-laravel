@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\DrinksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::get('drink', [DrinksController::class, 'index']);
+
+// 此方法可以一次把CRUD 整合成一個
+Route::apiResource('drink', DrinksController::class);
