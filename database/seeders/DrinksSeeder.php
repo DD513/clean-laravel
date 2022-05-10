@@ -31,7 +31,7 @@ class DrinksSeeder extends Seeder
             'Type' => '經典茶飲',
             'Price' => 30,
             'Description' => '淡雅輕盈的花香調，可比嬌豔欲滴的罌粟紅花，散發名門閨秀的氣質，優雅而令人傾心。取自罕見的斯里蘭卡中高海拔產區茶葉，帶清爽孤傲的花香；搭配海鮮料理享用，為中和腥羶味的首選。',
-            'Images' => '/img/demo/drinks/punceauBlackTea.jpeg',
+            'Images' => '/img/demo/drinks/ponceauBlackTea.jpeg',
             'Size' => 'L',
         ]);
 

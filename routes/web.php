@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\DrinksController;
+use App\Http\Controllers\DrinkMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('drinks/menu', [DrinkMenuController::class, 'index'])->name('drinks.menu');
+
+
+
+require __DIR__ . '/auth.php';

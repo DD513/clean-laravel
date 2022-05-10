@@ -23,6 +23,10 @@ class DrinksController extends Controller
      */
     public function index()
     {
+        // return view('drinks.index', [
+        //     'dd' => 'dd HI Index',
+        //     'drinks' => $this->drink->getAllDrink(),
+        // ]);
         return response()->json([
             'dd' => 'dd HI Index',
             'drinks' => $this->drink->getAllDrink(),
