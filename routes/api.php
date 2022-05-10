@@ -18,8 +18,7 @@ use App\Http\Controllers\Api\DrinksController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('drink', DrinksController::class);
 
-// Route::middleware('Api')->group(function () {
-//     Route::apiResource('drink', 'DrinksController');
-// });
-Route::get('drink', [DrinksController::class, 'index']);
+// Route::get('drink', [DrinksController::class, 'index']);
+// Route::post('drink', [DrinksController::class, 'store']);

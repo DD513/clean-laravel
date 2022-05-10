@@ -23,7 +23,10 @@ class DrinksController extends Controller
      */
     public function index()
     {
-        return $this->drink->getAllDrink();
+        return response()->json([
+            'dd' => 'dd HI Index',
+            'drinks' => $this->drink->getAllDrink(),
+        ], 200);
     }
 
     /**
@@ -34,7 +37,13 @@ class DrinksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $createDrink = $this->drink->createDrink($request);
+
+        return response()->json([
+            'dd' => 'dd HI Store',
+            'status' => '新增成功',
+            'req' => $createDrink,
+        ], 200);
     }
 
     /**
@@ -45,7 +54,16 @@ class DrinksController extends Controller
      */
     public function show($id)
     {
-        //
+        $getAssignDrink = $this->drink->getAssignDrink($id);
+
+        if (!$getAssignDrink) {
+            return response()->json(['status' => "查詢失敗"], 400);
+        }
+        return response()->json([
+            'dd' => 'dd HI Show',
+            'status' => '查詢成功',
+            'req' => $getAssignDrink,
+        ], 200);
     }
 
     /**
@@ -57,7 +75,15 @@ class DrinksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $createDrink = $this->drink->updateDrink($request, $id);
+        if (!$createDrink) {
+            return response()->json(['status' => "修改失敗"], 400);
+        }
+        return response()->json([
+            'dd' => 'dd HI Store',
+            'status' => '修改成功',
+            'req' => $createDrink,
+        ], 200);
     }
 
     /**
@@ -68,6 +94,14 @@ class DrinksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deletedrink = $this->drink->deleteDrink($id);
+        if (!$deletedrink) {
+            return response()->json(['status' => "刪除失敗"], 400);
+        }
+        return response()->json([
+            'dd' => 'dd HI Store',
+            'status' => '刪除成功',
+            'req' => $deletedrink,
+        ], 200);
     }
 }
