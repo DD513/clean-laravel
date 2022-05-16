@@ -24,6 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('drinks/menu', [DrinkMenuController::class, 'index'])->name('drinks.menu');
+Route::get('drinks/edit/{id}', [DrinkMenuController::class, 'edit'])->name('drinks.edit');
+
 
 
 

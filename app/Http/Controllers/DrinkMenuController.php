@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\DrinkService;
+use App\Models\Drink;
 
 class DrinkMenuController extends Controller
 {
@@ -68,7 +69,10 @@ class DrinkMenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Drink = Drink::findOrFail($id);
+        return view('drinks.edit', [
+            'Drink' => $Drink,
+        ]);
     }
 
     /**

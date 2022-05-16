@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+</head>
+
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -24,13 +28,14 @@
             <tbody>
               @foreach ($drinks as $i => $drink)
               <tr>
-                <th scope="row">{{ $i }}</th>
+                <th scope="row">{{ $i + 1 }}</th>
                 <td>{{ $drink->Title }}</td>
                 <td>{{ $drink->SmallTitle }}</td>
                 <td>{{ $drink->Type }}</td>
                 <td>{{ $drink->Price }}</td>
                 <td>{{ $drink->Size }}</td>
-                <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                <!-- <td><button type="button" class="btn btn-outline-info" onclick="handleEdit( {{$drink}} )">Edit</button></td> -->
+                <td><a href="{{ route('drinks.edit', $drink->id) }}" class="btn btn-outline-info">Edit</a></td>
               </tr>
               @endforeach
             </tbody>
@@ -40,7 +45,19 @@
 
             <div class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
               <div class="card mb-3 " style="width: 18rem;">
-                <img class="card-img-top" src="{{ $drink->Images }}" alt="{{ $drink->Title }}">
+                <a href="{{ route('drinks.edit', $drink->id) }}">
+                  <div class="card box">
+                    <div class="imgBlock">
+                      <img class="card-img-top" src="{{ $drink->Images }}" alt="{{ $drink->Title }}">
+                    </div>
+
+                    <div class="overlay">
+                      <div class="overlayText"><i class="bi bi-eye-fill"></i> More</div>
+                    </div>
+                  </div>
+                </a>
+
+
                 <div class="card-body d-flex justify-content-center">
                   <h5 class="card-title">{{ $drink->Title }}</h5>
                 </div>
@@ -56,3 +73,11 @@
     </div>
   </div>
 </x-app-layout>
+
+<script>
+  $(function() {
+    handleEdit = ($drink) => {
+      console.log(555, $drink.id);
+    }
+  });
+</script>
