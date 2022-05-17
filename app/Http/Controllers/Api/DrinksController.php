@@ -59,15 +59,38 @@ class DrinksController extends Controller
     public function show($id)
     {
         $getAssignDrink = $this->drink->getAssignDrink($id);
-
+        $AllDrinks = $this->drink->getAllDrink();
+        $Prev = '';
+        $Next = '';
+        foreach ($AllDrinks as $i => $Drink) {
+            if ($Drink->id === $getAssignDrink->id) {
+                if ($i === 0) {
+                    $Prev = $AllDrinks[count($AllDrinks) - 1]->id;
+                    $Next = $AllDrinks[$i + 1]->id;
+                } else if ($i === count($AllDrinks) - 1) {
+                    $Prev = $AllDrinks[$i - 1]->id;
+                    $Next = $AllDrinks[0]->id;
+                } else {
+                    $Prev = $AllDrinks[$i - 1]->id;
+                    $Next = $AllDrinks[$i + 1]->id;
+                }
+            }
+        }
         if (!$getAssignDrink) {
             return response()->json(['status' => "查詢失敗"], 400);
         }
-        return response()->json([
+        // return response()->json([
+        //     'dd' => 'dd HI Show',
+        //     'status' => '查詢成功',
+        //     'req' => $getAssignDrink,
+        // ], 200);
+        return view('drinks.show', [
             'dd' => 'dd HI Show',
             'status' => '查詢成功',
-            'req' => $getAssignDrink,
-        ], 200);
+            'Drink' => $getAssignDrink,
+            'Prev' => $Prev,
+            'Next' => $Next,
+        ]);
     }
 
     /**

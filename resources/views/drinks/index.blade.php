@@ -45,7 +45,7 @@
 
             <div class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
               <div class="card mb-3 " style="width: 18rem;">
-                <a href="{{ route('drinks.edit', $drink->id) }}">
+                <a href="{{ route('drinks.show', $drink->id) }}">
                   <div class="card box">
                     <div class="imgBlock">
                       <img class="card-img-top" src="{{ $drink->Images }}" alt="{{ $drink->Title }}">

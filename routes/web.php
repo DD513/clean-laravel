@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
 
 Route::get('drinks/menu', [DrinkMenuController::class, 'index'])->name('drinks.menu');
 Route::get('drinks/edit/{id}', [DrinkMenuController::class, 'edit'])->name('drinks.edit');
+Route::get('drinks/detail/{id}', [DrinksController::class, 'show'])->name('drinks.show');
+
 
 
 
